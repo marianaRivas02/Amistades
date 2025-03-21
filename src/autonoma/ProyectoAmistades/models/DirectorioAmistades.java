@@ -27,6 +27,27 @@ public class DirectorioAmistades {
     }
     
     
+    public boolean eliminarAmigo(Amigo amigo){
+        for (int i = 0; i < amigos.size(); i++){
+            if (amigos.get(i).getNombres().equals(amigo.getNombres())){ 
+                amigos.remove(i);
+            }
+            
+            return true;
+        }
+       
+      return false;  
+    }
+    
+    public Amigo buscarAmigo(String email){
+        for (int i = 0; i < amigos.size(); i++){
+            Amigo amigo = amigos.get(i);
+            if (amigo.getEmail().equals(email)) {
+                return amigo;
+            }
+        }
+        return null;      
+    }
     
     
 }
