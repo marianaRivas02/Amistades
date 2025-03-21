@@ -1,0 +1,13 @@
+LISTA EXCEPCIONES - DIRECTORIO AMISTADES - PROGRAMACION ORIENTADA A OBJETOS
+CAMILA POLOCHE LONDOÑO
+MARIANA RIVAS CLAVIJO
+
+EXCEPCIONES:
+
+- DatosInvalidosException - RunTimeException
+- AmigoExistenteException - RunTimeException
+- AmigoNoEncontradoException - RunTimeException
+- ArchivoNoEncontrado - Exception
+
+
+
