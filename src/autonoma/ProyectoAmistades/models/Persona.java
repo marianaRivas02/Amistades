@@ -40,10 +40,5 @@ public abstract class Persona {
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
-<<<<<<< HEAD
-=======
-    
-    
-    
->>>>>>> 21c23168605e82a134aa68ae5f8c1482d9115817
+
 }

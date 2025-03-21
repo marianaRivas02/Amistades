@@ -4,6 +4,7 @@
  */
 package autonoma.ProyectoAmistades.models;
 
+import autonoma.ProyectoAmistades.exceptions.AmigoExistenteException;
 import java.util.ArrayList;
 
 /**
@@ -49,11 +50,14 @@ public class DirectorioAmistades {
      * @param amigo
      * @return booleano
     */
-    public boolean agregarAmigo (Amigo amigo){
+    public boolean agregarAmigo (Amigo amigo) throws AmigoExistenteException {
         for (int i = 0; i < this.amigos.size(); i++){
             if (this.amigos.get(i) != amigo){
                 amigos.add(amigo);
                 return true;
+            }
+            else{
+                throw new AmigoExistenteException();       
             }
         }
         return false;
@@ -106,5 +110,9 @@ public class DirectorioAmistades {
         }
        
       return false;  
+    }
+    
+     public ArrayList mostrarAmigos (){
+        return amigos;
     }
 }
