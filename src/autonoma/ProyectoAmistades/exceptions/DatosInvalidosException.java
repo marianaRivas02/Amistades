@@ -8,6 +8,8 @@ package autonoma.ProyectoAmistades.exceptions;
  *
  * @author maria
  */
-public class DatosInvalidosException {
+public class DatosInvalidosException extends RuntimeException {
+    
+    
     
 }

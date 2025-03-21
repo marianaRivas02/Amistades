@@ -8,6 +8,6 @@ package autonoma.ProyectoAmistades.exceptions;
  *
  * @author maria
  */
-public class AmigoNoEncontradoException {
+public class AmigoNoEncontradoException extends RuntimeException {
     
 }

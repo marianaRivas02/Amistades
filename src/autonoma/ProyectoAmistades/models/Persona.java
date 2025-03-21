@@ -8,6 +8,25 @@ package autonoma.ProyectoAmistades.models;
  *
  * @author maria
  */
-public class Persona {
+public abstract class Persona {
+    
+    private String nombres;
+
+    public Persona(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+    
+    
+    
+   
+    
     
 }
