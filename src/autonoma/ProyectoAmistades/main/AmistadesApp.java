@@ -5,9 +5,13 @@
 package autonoma.ProyectoAmistades.main;
 
 /**
- *
- * @author maria
+ * Clase principal - main
+ * @author Mariana
+ * @since 20250321
+ * @version 1.0
  */
 public class AmistadesApp {
-    
+    public static void main(String[] args) {
+        
+    }
 }

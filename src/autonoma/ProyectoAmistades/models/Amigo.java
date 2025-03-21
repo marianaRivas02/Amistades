@@ -4,6 +4,8 @@
  */
 package autonoma.ProyectoAmistades.models;
 
+import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+
 /**
  * Modelo que permite representar un amigo
  * @author Mariana
@@ -23,13 +25,25 @@ public class Amigo extends Persona {
     private String email;
 
     /**
-     * Inicializa los atributos de la clase
+     * Inicializa los atributos de la clase y lanza la excepcion de DatosInvalidosException
      * @param telefono
      * @param email
      * @param nombres
     */
-    public Amigo(String telefono, String email, String nombres) {
+    public Amigo(String telefono, String email, String nombres) throws DatosInvalidosException {
         super(nombres);
+        int posicion = email.indexOf('@'); 
+        boolean inicioTel = telefono.startsWith("606"); 
+        boolean inicioTel2 = telefono.startsWith("30"); 
+        
+        if(!inicioTel || !inicioTel2){
+            throw new DatosInvalidosException();
+        }
+        
+        if(telefono == null || telefono.isEmpty() || email == null || email.isEmpty() || posicion == -1){
+            throw new DatosInvalidosException();
+        }
+       
         this.telefono = telefono;
         this.email = email;
     }
@@ -65,14 +79,4 @@ public class Amigo extends Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

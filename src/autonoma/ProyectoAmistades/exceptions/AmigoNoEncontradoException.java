@@ -5,13 +5,17 @@
 package autonoma.ProyectoAmistades.exceptions;
 
 /**
- *
- * @author maria
+ * Excepcion AmigoNoEncontradoException
+ * @author Camila
+ * @since 20250321
+ * @version 1.0
  */
+
 public class AmigoNoEncontradoException extends RuntimeException {
-    
-     public AmigoNoEncontradoException(){
-         super("El amigo no fue encontrado en el directorio");
-     }
-    
+    /**
+     * Mensaje de la excepcion
+    */
+    public AmigoNoEncontradoException(){
+        super("El amigo no fue encontrado en el directorio");
+    }
 }

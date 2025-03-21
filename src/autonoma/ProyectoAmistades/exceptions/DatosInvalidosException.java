@@ -5,11 +5,16 @@
 package autonoma.ProyectoAmistades.exceptions;
 
 /**
- *
- * @author maria
+ * Excepcion de DatosInvalidosException
+ * @author Camila
+ * @since 20250321
+ * @version 1.0
  */
 public class DatosInvalidosException extends RuntimeException {
-    
-    
-    
+    /**
+     * Mensaje de la excepcion
+    */
+    public DatosInvalidosException(){
+        super ("Datos invalidos, intentelo nuevamente");
+    }
 }
