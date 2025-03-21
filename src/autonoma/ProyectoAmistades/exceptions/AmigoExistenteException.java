@@ -10,4 +10,8 @@ package autonoma.ProyectoAmistades.exceptions;
  */
 public class AmigoExistenteException extends RuntimeException{
     
+    public AmigoExistenteException(){
+        super("El amigo ya existe en el directorio");
+    }
+    
 }

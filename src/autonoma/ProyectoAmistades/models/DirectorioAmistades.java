@@ -50,13 +50,30 @@ public class DirectorioAmistades {
      * @return booleano
     */
     public boolean agregarAmigo (Amigo amigo){
-        if (buscarAmigo){
-            amigos.add(amigo);
-            return true;
+        for (int i = 0; i < this.amigos.size(); i++){
+            if (this.amigos.get(i) != amigo){
+                amigos.add(amigo);
+                return true;
+            }
         }
         return false;
     }
     
+    /**
+     * Buscar un amigo
+     * @param email
+     * @return amigo
+    */
+    public Amigo buscarAmigo(String email){
+        for (int i = 0; i < amigos.size(); i++){
+            Amigo amigo = amigos.get(i);
+            if (amigo.getEmail().equals(email)) {
+                return amigo;
+            }
+        }
+        return null;      
+    }
+        
     /**
      * Actualiza la informacion de un amigo
      * @param email
@@ -72,5 +89,22 @@ public class DirectorioAmistades {
             }
         }
         return false;
+    }
+    
+    /**
+     * Eliminar un amigo del arreglo
+     * @param amigo
+     * @return booleano
+    */
+    public boolean eliminarAmigo(Amigo amigo){
+        for (int i = 0; i < amigos.size(); i++){
+            if (amigos.get(i).getNombres().equals(amigo.getNombres())){ 
+                amigos.remove(i);
+            }
+            
+            return true;
+        }
+       
+      return false;  
     }
 }
