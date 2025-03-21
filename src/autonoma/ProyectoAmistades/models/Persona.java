@@ -5,28 +5,39 @@
 package autonoma.ProyectoAmistades.models;
 
 /**
- *
- * @author maria
+ * Modelo que permite representar una persona
+ * @author Mariana
+ * @since 20250321
+ * @version 1.0
  */
 public abstract class Persona {
-    
+    //Atributos
+    /**
+    * Nombres de la persona
+    */
     private String nombres;
 
+    /**
+     * Inicializa los atributos de la clase
+     * @param nombres
+    */
     public Persona(String nombres) {
         this.nombres = nombres;
     }
 
+    /**
+     * Retorna los nombres de la persona
+     * @return nombres
+    */
     public String getNombres() {
         return nombres;
     }
 
+    /**
+     * Modifica los nombres de la persona
+     * @param nombres
+    */
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
-    
-    
-    
-   
-    
-    
 }
