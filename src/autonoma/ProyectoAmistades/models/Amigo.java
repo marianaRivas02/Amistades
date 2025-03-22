@@ -32,21 +32,26 @@ public class Amigo extends Persona {
     */
     public Amigo(String telefono, String email, String nombres) throws DatosInvalidosException {
         super(nombres);
-        int posicion = email.indexOf('@'); 
-        boolean inicioTel = telefono.startsWith("606"); 
-        boolean inicioTel2 = telefono.startsWith("30"); 
         
-        if(!inicioTel || !inicioTel2){
+        if (telefono == null || telefono.isEmpty() || email == null || email.isEmpty()) {
             throw new DatosInvalidosException();
         }
-        
-        if(telefono == null || telefono.isEmpty() || email == null || email.isEmpty() || posicion == -1){
+
+        boolean inicioTel = telefono.startsWith("606");
+        boolean inicioTel2 = telefono.startsWith("30");
+
+        if (!(inicioTel || inicioTel2)) { 
             throw new DatosInvalidosException();
         }
-       
+
+        if (email.indexOf('@') == -1) {
+            throw new DatosInvalidosException();
+        }
+
         this.telefono = telefono;
         this.email = email;
     }
+
 
     /**
      * Retorna el telefono del amigo
