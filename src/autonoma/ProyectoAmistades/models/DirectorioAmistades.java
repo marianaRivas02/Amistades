@@ -65,16 +65,18 @@ public class DirectorioAmistades {
      * @return amigo
     */
     public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException{
+        boolean encontrado = false;
         for (int i = 0; i < amigos.size(); i++){
             Amigo amigo = amigos.get(i);
             if (amigo.getEmail().equals(email)) {
+                encontrado = true;
                 return amigo;
             }
-            else{
-                throw new AmigoNoEncontradoException();
-            }
         }
-        return null;      
+        
+        if (!encontrado){
+            throw new AmigoNoEncontradoException();
+        }      
     }
         
     /**
@@ -101,19 +103,19 @@ public class DirectorioAmistades {
     /**
      * Eliminar un amigo del arreglo
      * @param amigo
-     * @return booleano
     */
-    public boolean eliminarAmigo(Amigo amigo) throws AmigoNoEncontradoException{
+    public void eliminarAmigo(Amigo amigo) throws AmigoNoEncontradoException{
+        boolean encontrado = false;
         for (int i = 0; i < amigos.size(); i++){
             if (amigos.get(i).getNombres().equals(amigo.getNombres())){ 
                 amigos.remove(i);
-                return true;
+                encontrado = true;
             }
-            else{
-                throw new AmigoNoEncontradoException();
-            } 
         }
-      return false;  
+        
+        if(!encontrado){
+            throw new AmigoNoEncontradoException();
+        }
     }
     
     /**
