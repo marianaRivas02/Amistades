@@ -55,15 +55,16 @@ public class AgregarAmigo extends javax.swing.JDialog {
 
         panelPrinicpal = new javax.swing.JPanel();
         panelInfo = new javax.swing.JPanel();
+        textoInfo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         btnAgregarAmigo = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        textoTel = new javax.swing.JLabel();
-        textoInfo = new javax.swing.JLabel();
-        txtNombreCompleto = new javax.swing.JTextField();
         textoNombres1 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        textoTel = new javax.swing.JLabel();
         textoEmail = new javax.swing.JLabel();
+        txtNombreCompleto = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         panelTitulo = new javax.swing.JPanel();
         textoAgregarA = new javax.swing.JLabel();
         iconoAgregar = new javax.swing.JLabel();
@@ -73,6 +74,10 @@ public class AgregarAmigo extends javax.swing.JDialog {
         panelPrinicpal.setBackground(new java.awt.Color(255, 255, 255));
 
         panelInfo.setBackground(new java.awt.Color(229, 229, 255));
+
+        textoInfo.setFont(new java.awt.Font("Gabriola", 1, 36)); // NOI18N
+        textoInfo.setForeground(new java.awt.Color(0, 153, 153));
+        textoInfo.setText("Informacion amigo:");
 
         btnAgregarAmigo.setBackground(new java.awt.Color(186, 200, 255));
         btnAgregarAmigo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,13 +106,17 @@ public class AgregarAmigo extends javax.swing.JDialog {
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        textoNombres1.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        textoNombres1.setForeground(new java.awt.Color(0, 153, 153));
+        textoNombres1.setText("Nombre completo");
+
         textoTel.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
         textoTel.setForeground(new java.awt.Color(0, 153, 153));
         textoTel.setText("Telefono");
 
-        textoInfo.setFont(new java.awt.Font("Gabriola", 1, 36)); // NOI18N
-        textoInfo.setForeground(new java.awt.Color(0, 153, 153));
-        textoInfo.setText("Informacion amigo:");
+        textoEmail.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        textoEmail.setForeground(new java.awt.Color(0, 153, 153));
+        textoEmail.setText("Email");
 
         txtNombreCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,9 +124,11 @@ public class AgregarAmigo extends javax.swing.JDialog {
             }
         });
 
-        textoNombres1.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
-        textoNombres1.setForeground(new java.awt.Color(0, 153, 153));
-        textoNombres1.setText("Nombre completo");
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,45 +136,60 @@ public class AgregarAmigo extends javax.swing.JDialog {
             }
         });
 
-        textoEmail.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
-        textoEmail.setForeground(new java.awt.Color(0, 153, 153));
-        textoEmail.setText("Email");
-
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(textoEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoTel)
+                            .addComponent(textoNombres1))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(btnAgregarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoNombres1)
+                    .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoTel)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+        );
 
         javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
         panelInfo.setLayout(panelInfoLayout);
         panelInfoLayout.setHorizontalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
             .addGroup(panelInfoLayout.createSequentialGroup()
-                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoEmail)
-                            .addComponent(textoTel))
-                        .addGap(92, 92, 92)
-                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(textoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelInfoLayout.createSequentialGroup()
-                    .addGap(67, 67, 67)
-                    .addComponent(textoNombres1)
-                    .addContainerGap(327, Short.MAX_VALUE)))
+                .addGap(16, 16, 16)
+                .addComponent(textoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelInfoLayout.setVerticalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,23 +197,8 @@ public class AgregarAmigo extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addComponent(textoInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoTel)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelInfoLayout.createSequentialGroup()
-                    .addGap(88, 88, 88)
-                    .addComponent(textoNombres1)
-                    .addContainerGap(180, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         panelTitulo.setBackground(new java.awt.Color(186, 200, 255));
@@ -248,7 +259,9 @@ public class AgregarAmigo extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrinicpal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelPrinicpal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -265,7 +278,7 @@ public class AgregarAmigo extends javax.swing.JDialog {
             String email = this.txtEmail.getText();
 
             Amigo nuevoAmigo = new Amigo(telefono, email, nombres);
-            boolean agregado = this.directorio.agregarAmigo(nuevoAmigo);
+            this.directorio.agregarAmigo(nuevoAmigo);
             JOptionPane.showMessageDialog(this, "Amigo agregado con exito");
             this.dispose();
 
@@ -277,6 +290,9 @@ public class AgregarAmigo extends javax.swing.JDialog {
 
         } catch (AmigoExistenteException e) {
             JOptionPane.showMessageDialog(this, "El amigo ya existe en el directorio");
+            this.txtNombreCompleto.setText("");
+            this.txtTelefono.setText("");
+            this.txtEmail.setText("");
         }
     }//GEN-LAST:event_btnAgregarAmigoMouseClicked
 
@@ -297,6 +313,7 @@ public class AgregarAmigo extends javax.swing.JDialog {
     private javax.swing.JPanel btnAgregarAmigo;
     private javax.swing.JLabel iconoAgregar;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelInfo;
     private javax.swing.JPanel panelPrinicpal;
     private javax.swing.JPanel panelTitulo;

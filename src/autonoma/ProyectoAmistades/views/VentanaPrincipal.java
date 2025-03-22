@@ -8,6 +8,7 @@ package autonoma.ProyectoAmistades.views;
 import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -499,7 +500,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarAmigoMouseClicked
 
     private void btnActualizarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAmigoMouseClicked
-        System.out.println("actualizar amigo");
+        if(this.directorio.getAmigos().size() == 0){
+            JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero");
+        }
+        else{
+            ActualizarAmigo ventanaActualizarAmigo = new ActualizarAmigo (this, true, this.directorio, this);
+            ventanaActualizarAmigo.setVisible(true);
+        }
     }//GEN-LAST:event_btnActualizarAmigoMouseClicked
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
