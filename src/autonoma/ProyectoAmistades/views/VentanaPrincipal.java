@@ -14,10 +14,6 @@ import javax.swing.JPanel;
  * @author maria
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VentanaPrincipal
-     */
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -503,11 +499,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerInfoAppMouseClicked
     
     private void mouseEntered(JPanel panel){
+<<<<<<< HEAD
         panel.setBackground(new Color (222, 229, 255));
     
+=======
+        panel.setBackground(new Color (207, 240, 255));
+>>>>>>> 45a45cdd32fdefa676d4b0e2d58413b050653585
     }
     
-     private void mouseExited (JPanel panel){
+    private void mouseExited (JPanel panel){
         panel.setBackground(Color.white);
     }
     

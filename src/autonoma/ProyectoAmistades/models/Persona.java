@@ -4,6 +4,8 @@
  */
 package autonoma.ProyectoAmistades.models;
 
+import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+
 /**
  * Modelo que permite representar una persona
  * @author Mariana
@@ -18,10 +20,13 @@ public abstract class Persona {
     private String nombres;
 
     /**
-     * Inicializa los atributos de la clase
+     * Inicializa los atributos de la clase y lanza la excepcion de DatosInvalidosException
      * @param nombres
     */
-    public Persona(String nombres) {
+    public Persona(String nombres)throws DatosInvalidosException {
+        if(nombres == null || nombres.isEmpty()){
+            throw new DatosInvalidosException();
+        }
         this.nombres = nombres;
     }
 
@@ -40,5 +45,4 @@ public abstract class Persona {
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
-
 }

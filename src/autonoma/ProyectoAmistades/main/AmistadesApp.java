@@ -7,15 +7,14 @@ package autonoma.ProyectoAmistades.main;
 import autonoma.ProyectoAmistades.views.VentanaPrincipal;
 
 /**
- *
- * @author maria
+ * Clase principal - main
+ * @author Mariana
+ * @since 20250321
+ * @version 1.0
  */
 public class AmistadesApp {
-    
     public static void main (String[] args){
-        
         VentanaPrincipal ventana = new VentanaPrincipal();
         ventana.setVisible(true);
     }
-    
 }

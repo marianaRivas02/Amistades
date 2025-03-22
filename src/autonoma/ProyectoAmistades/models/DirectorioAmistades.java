@@ -4,6 +4,7 @@
  */
 package autonoma.ProyectoAmistades.models;
 
+import autonoma.ProyectoAmistades.exceptions.AmigoNoEncontradoException;
 import autonoma.ProyectoAmistades.exceptions.AmigoExistenteException;
 import java.util.ArrayList;
 
@@ -64,15 +65,18 @@ public class DirectorioAmistades {
     }
     
     /**
-     * Buscar un amigo
+     * Buscar un amigo - Lanzar excepcion si no fue encontrado
      * @param email
      * @return amigo
     */
-    public Amigo buscarAmigo(String email){
+    public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException{
         for (int i = 0; i < amigos.size(); i++){
             Amigo amigo = amigos.get(i);
             if (amigo.getEmail().equals(email)) {
                 return amigo;
+            }
+            else{
+                throw new AmigoNoEncontradoException();
             }
         }
         return null;      
