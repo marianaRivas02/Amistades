@@ -510,11 +510,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarAmigoMouseClicked
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        System.out.println("salir");
+        this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void btnVerAmigosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerAmigosMouseClicked
-        System.out.println("ver amigos");
+        VerAmigos ventanaVerAmigos = new VerAmigos (this, true, this.directorio, this);
+        ventanaVerAmigos.setVisible(true);
     }//GEN-LAST:event_btnVerAmigosMouseClicked
 
     private void btnVerInfoAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerInfoAppMouseClicked

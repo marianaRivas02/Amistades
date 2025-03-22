@@ -66,6 +66,16 @@ public class Amigo extends Persona {
      * @param telefono
     */
     public void setTelefono(String telefono) {
+        if (telefono == null || telefono.isEmpty()) {
+            throw new DatosInvalidosException();
+        }
+
+        boolean inicioTel = telefono.startsWith("606");
+        boolean inicioTel2 = telefono.startsWith("30");
+
+        if (!(inicioTel || inicioTel2)) { 
+            throw new DatosInvalidosException();
+        }
         this.telefono = telefono;
     }
 
@@ -82,6 +92,14 @@ public class Amigo extends Persona {
      * @param email
     */
     public void setEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            throw new DatosInvalidosException();
+        }
+        
+        if (email.indexOf('@') == -1) {
+            throw new DatosInvalidosException();
+        }
+        
         this.email = email;
     }
 }
