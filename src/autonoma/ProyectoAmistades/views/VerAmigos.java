@@ -4,18 +4,47 @@
  */
 package autonoma.ProyectoAmistades.views;
 
+import autonoma.ProyectoAmistades.models.Amigo;
+import autonoma.ProyectoAmistades.models.DirectorioAmistades;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author maria
  */
 public class VerAmigos extends javax.swing.JDialog {
-
+    //Atributos 
     /**
-     * Creates new form VerAmigos
-     */
-    public VerAmigos(java.awt.Frame parent, boolean modal) {
+    * Instancia de ventanaPrincipal
+    */
+    VentanaPrincipal ventana;
+    /**
+    * Instancia de directorioAmistades
+    */
+    DirectorioAmistades directorio;
+    /**
+    * Arreglo de libros
+    */
+    private ArrayList <Amigo> amigos;
+    
+    /**
+     * Inicializa los atributos de la clase AgregarAmigo
+     *
+     * @param     parent
+     * @param     modal
+     * @param     directorio
+     * @param     ventana
+    */
+    public VerAmigos(java.awt.Frame parent, boolean modal, DirectorioAmistades directorio, VentanaPrincipal ventana) {
         super(parent, modal);
         initComponents();
+        this.ventana = ventana;
+        this.directorio = directorio;
+        this.amigos = this.directorio.getAmigos();
+        this.llenarTabla();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,25 +56,191 @@ public class VerAmigos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelPrincipal = new javax.swing.JPanel();
+        panelTitulo = new javax.swing.JPanel();
+        textoDirectorioA = new javax.swing.JLabel();
+        iconoAmigos = new javax.swing.JLabel();
+        panelInfo = new javax.swing.JPanel();
+        textoListaA = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaAmigos = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelTitulo.setBackground(new java.awt.Color(186, 200, 255));
+
+        textoDirectorioA.setFont(new java.awt.Font("Gabriola", 0, 60)); // NOI18N
+        textoDirectorioA.setForeground(new java.awt.Color(255, 255, 255));
+        textoDirectorioA.setText("Directorio amigos");
+
+        iconoAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoAmistades/images/verAmigos.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
+        panelTitulo.setLayout(panelTituloLayout);
+        panelTituloLayout.setHorizontalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(textoDirectorioA)
+                .addGap(18, 18, 18)
+                .addComponent(iconoAmigos)
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+        panelTituloLayout.setVerticalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconoAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoDirectorioA))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelInfo.setBackground(new java.awt.Color(229, 229, 255));
+
+        textoListaA.setFont(new java.awt.Font("Gabriola", 1, 36)); // NOI18N
+        textoListaA.setForeground(new java.awt.Color(0, 153, 153));
+        textoListaA.setText("Lista amigos");
+
+        tablaAmigos.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        tablaAmigos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombres", "Telefono", "Email"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaAmigos);
+
+        btnActualizar.setBackground(new java.awt.Color(186, 200, 255));
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Gabriola", 3, 22)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Volver");
+
+        javax.swing.GroupLayout btnActualizarLayout = new javax.swing.GroupLayout(btnActualizar);
+        btnActualizar.setLayout(btnActualizarLayout);
+        btnActualizarLayout.setHorizontalGroup(
+            btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnActualizarLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+        btnActualizarLayout.setVerticalGroup(
+            btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnActualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
+        panelInfo.setLayout(panelInfoLayout);
+        panelInfoLayout.setHorizontalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(textoListaA, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelInfoLayout.setVerticalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(textoListaA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnActualizarMouseClicked
+    
     /**
-     * @param args the command line arguments
-     */
+     * Inicializa y da los valores de la tabla
+    */
+    public void llenarTabla (){
+        DefaultTableModel modelDefault  = new DefaultTableModel (new String[]{"Nombres", "Telefono", "Email"}, this.amigos.size());
+        this.tablaAmigos.setModel (modelDefault);
+        
+        TableModel dataModel = tablaAmigos.getModel();
+        for(int i = 0; i < this.amigos.size(); i++){
+            Amigo amigo = this.amigos.get(i);
+            
+            dataModel.setValueAt (amigo.getNombres(), i, 0);
+            dataModel.setValueAt (amigo.getTelefono(), i, 1);
+            dataModel.setValueAt (amigo.getEmail(), i, 2);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnActualizar;
+    private javax.swing.JLabel iconoAmigos;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelInfo;
+    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JTable tablaAmigos;
+    private javax.swing.JLabel textoDirectorioA;
+    private javax.swing.JLabel textoListaA;
     // End of variables declaration//GEN-END:variables
 }

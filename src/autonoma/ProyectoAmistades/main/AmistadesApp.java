@@ -4,6 +4,7 @@
  */
 package autonoma.ProyectoAmistades.main;
 
+import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import autonoma.ProyectoAmistades.views.VentanaPrincipal;
 
 /**
@@ -14,7 +15,17 @@ import autonoma.ProyectoAmistades.views.VentanaPrincipal;
  */
 public class AmistadesApp {
     public static void main (String[] args){
-        VentanaPrincipal ventana = new VentanaPrincipal();
+        /**
+        * Instancia de DirectorioAmistades
+        */
+        DirectorioAmistades directorio = new DirectorioAmistades();
+        /**
+        * Instancia de VentanaPrincipal
+        */
+        VentanaPrincipal ventana = new VentanaPrincipal(directorio);
+        /**
+        * Muestra la VentanaPrincipal
+        */
         ventana.setVisible(true);
     }
 }

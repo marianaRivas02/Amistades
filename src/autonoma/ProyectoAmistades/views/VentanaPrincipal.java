@@ -5,8 +5,10 @@
 package autonoma.ProyectoAmistades.views;
 
 
+import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -14,14 +16,28 @@ import javax.swing.JPanel;
  * @author maria
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    public VentanaPrincipal() {
+    //Atributos 
+    /**
+    * Instancia de DirectorioAmistades
+    */
+    DirectorioAmistades directorio;
+    
+    /**
+     * Inicializa los atributos de la clase VentanaPrincipal
+     *
+     * @param    directorio
+    */
+    public VentanaPrincipal(DirectorioAmistades directorio) {
         initComponents();
         this.setLocationRelativeTo(null);
         try{
-            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/proyectoAmistades/images/DirectorioAmistades.png")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/proyectoAmistades/images/directorioAmistades.png")).getImage());
         }catch (Exception e){
             
         }
+        
+        this.directorio = directorio;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -408,7 +424,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -470,11 +486,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnAgregarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarAmigoMouseClicked
-        System.out.println("agregar amigo");
+        AgregarAmigo ventanaAgregarAmigo = new AgregarAmigo (this, true, this.directorio, this);
+        ventanaAgregarAmigo.setVisible(true);
     }//GEN-LAST:event_btnAgregarAmigoMouseClicked
 
     private void btnEliminarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarAmigoMouseClicked
-        System.out.println("eliminar amigo");
+        if(this.directorio.getAmigos().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero, no puede eliminar amigos inexistentes");
+        }
+        else{
+            EliminarAmigo ventanaEliminarAmigo = new EliminarAmigo (this, true, this.directorio, this);
+            ventanaEliminarAmigo.setVisible(true);
+        }
     }//GEN-LAST:event_btnEliminarAmigoMouseClicked
 
     private void btnBuscarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarAmigoMouseClicked
@@ -482,15 +505,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarAmigoMouseClicked
 
     private void btnActualizarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAmigoMouseClicked
-        System.out.println("actualizar amigo");
+        if(this.directorio.getAmigos().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero");
+        }
+        else{
+            ActualizarAmigo ventanaActualizarAmigo = new ActualizarAmigo (this, true, this.directorio, this);
+            ventanaActualizarAmigo.setVisible(true);
+        }
     }//GEN-LAST:event_btnActualizarAmigoMouseClicked
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        System.out.println("salir");
+        this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void btnVerAmigosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerAmigosMouseClicked
-        System.out.println("ver amigos");
+        VerAmigos ventanaVerAmigos = new VerAmigos (this, true, this.directorio, this);
+        ventanaVerAmigos.setVisible(true);
     }//GEN-LAST:event_btnVerAmigosMouseClicked
 
     private void btnVerInfoAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerInfoAppMouseClicked
@@ -499,19 +529,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void mouseEntered(JPanel panel){
 
+
         panel.setBackground(new Color (222, 229, 255));
     
 
         panel.setBackground(new Color (207, 240, 255));
-
     }
     
     private void mouseExited (JPanel panel){
         panel.setBackground(Color.white);
     }
-    
-  
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnActualizarAmigo;
     private javax.swing.JPanel btnAgregarAmigo;

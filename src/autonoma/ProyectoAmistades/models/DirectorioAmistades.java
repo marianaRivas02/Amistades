@@ -49,74 +49,87 @@ public class DirectorioAmistades {
     /**
      * Agregar un nuevo amigo al arreglo
      * @param amigo
-     * @return booleano
     */
-    public boolean agregarAmigo (Amigo amigo) throws AmigoExistenteException {
-        for (int i = 0; i < this.amigos.size(); i++){
-            if (this.amigos.get(i) != amigo){
-                amigos.add(amigo);
-                return true;
-            }
-            else{
-                throw new AmigoExistenteException();       
+    public void agregarAmigo(Amigo amigo) throws AmigoExistenteException {
+        for (int i = 0; i < this.amigos.size(); i++) {
+            if (this.amigos.get(i).equals(amigo)) { 
+                throw new AmigoExistenteException();
             }
         }
-        return false;
+        this.amigos.add(amigo); 
     }
-    
+
     /**
      * Buscar un amigo - Lanzar excepcion si no fue encontrado
      * @param email
      * @return amigo
     */
     public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException{
+        boolean encontrado = false;
         for (int i = 0; i < amigos.size(); i++){
             Amigo amigo = amigos.get(i);
             if (amigo.getEmail().equals(email)) {
+                encontrado = true;
                 return amigo;
             }
-            else{
-                throw new AmigoNoEncontradoException();
-            }
         }
-        return null;      
+        
+        if (!encontrado){
+            throw new AmigoNoEncontradoException();
+        }      
     }
         
     /**
      * Actualiza la informacion de un amigo
      * @param email
      * @param telefono
-     * @return booleano
+     * @param emailBuscar
     */
-    public boolean actualizarAmigo (String email, String telefono){
+    public void actualizarAmigo (String email, String telefono, String emailBuscar) throws AmigoNoEncontradoException{
+        boolean encontrado = false;
         for (int i = 0; i < this.amigos.size(); i++){
-            if(this.amigos.get(i).getEmail().equals(email)){
+            if(this.amigos.get(i).getEmail().equals(emailBuscar)){
                 this.amigos.get(i).setEmail(email);
                 this.amigos.get(i).setTelefono(telefono);
-                return true;
+                encontrado = true;
             }
         }
-        return false;
+        
+        if (!encontrado) {
+            throw new AmigoNoEncontradoException();
+        }
     }
     
     /**
      * Eliminar un amigo del arreglo
      * @param amigo
-     * @return booleano
     */
-    public boolean eliminarAmigo(Amigo amigo){
-        for (int i = 0; i < amigos.size(); i++){
-            if (amigos.get(i).getNombres().equals(amigo.getNombres())){ 
-                amigos.remove(i);
-            }
-            
-            return true;
-        }
+    public void eliminarAmigo(Amigo amigo) throws AmigoNoEncontradoException {
+    boolean encontrado = false;
+    
+    for (int i = 0; i < amigos.size(); i++) {
+        Amigo amigo1 = amigos.get(i);
        
-      return false;  
+        if (amigo1.getNombres().equals(amigo.getNombres()) &&
+            amigo1.getTelefono().equals(amigo.getTelefono()) &&
+            amigo1.getEmail().equals(amigo.getEmail())) {
+            amigos.remove(i);
+            encontrado = true;
+            break; 
+        }
     }
     
-     public ArrayList mostrarAmigos (){
+    if (!encontrado) {
+        throw new AmigoNoEncontradoException();
+    }
+}
+
+    
+    /**
+     * Retorna el arreglo de amigos
+     * @return amigos
+    */
+    public ArrayList mostrarAmigos (){
         return amigos;
     }
 }

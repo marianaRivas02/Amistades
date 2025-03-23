@@ -4,18 +4,40 @@
  */
 package autonoma.ProyectoAmistades.views;
 
+import autonoma.ProyectoAmistades.exceptions.AmigoNoEncontradoException;
+import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.models.DirectorioAmistades;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author maria
  */
 public class ActualizarAmigo extends javax.swing.JDialog {
-
+    //Atributos 
     /**
-     * Creates new form ActualizarAmigo
-     */
-    public ActualizarAmigo(java.awt.Frame parent, boolean modal) {
+    * Instancia de ventanaPrincipal
+    */
+    VentanaPrincipal ventana;
+    /**
+    * Instancia de directorioAmistades
+    */
+    DirectorioAmistades directorio;
+    
+    /**
+     * Inicializa los atributos de la clase AgregarAmigo
+     *
+     * @param     parent
+     * @param     modal
+     * @param     directorio
+     * @param     ventana
+    */
+    public ActualizarAmigo(java.awt.Frame parent, boolean modal, DirectorioAmistades directorio, VentanaPrincipal ventana) {
         super(parent, modal);
         initComponents();
+        this.ventana = ventana;
+        this.directorio = directorio;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,27 +49,274 @@ public class ActualizarAmigo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelPrincipal = new javax.swing.JPanel();
+        panelTitulo = new javax.swing.JPanel();
+        textoActualizarA = new javax.swing.JLabel();
+        iconoActualizar = new javax.swing.JLabel();
+        panelInfo = new javax.swing.JPanel();
+        textoCorreoA = new javax.swing.JLabel();
+        txtEmailActualizar = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        textoTel = new javax.swing.JLabel();
+        textoEmail = new javax.swing.JLabel();
+        txtTelefonoNuevo = new javax.swing.JTextField();
+        txtEmailNuevi = new javax.swing.JTextField();
+        textoNuevaInfo = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelTitulo.setBackground(new java.awt.Color(186, 200, 255));
+
+        textoActualizarA.setFont(new java.awt.Font("Gabriola", 0, 60)); // NOI18N
+        textoActualizarA.setForeground(new java.awt.Color(255, 255, 255));
+        textoActualizarA.setText("Actualizar informacion");
+
+        iconoActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoAmistades/images/actualizarAmigo.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
+        panelTitulo.setLayout(panelTituloLayout);
+        panelTituloLayout.setHorizontalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(textoActualizarA)
+                .addGap(18, 18, 18)
+                .addComponent(iconoActualizar)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        panelTituloLayout.setVerticalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoActualizarA))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelInfo.setBackground(new java.awt.Color(229, 229, 255));
+
+        textoCorreoA.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        textoCorreoA.setForeground(new java.awt.Color(0, 153, 153));
+        textoCorreoA.setText("Ingrese el correo del amigo");
+
+        txtEmailActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActualizarActionPerformed(evt);
+            }
+        });
+
+        textoTel.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        textoTel.setForeground(new java.awt.Color(0, 153, 153));
+        textoTel.setText("Telefono");
+
+        textoEmail.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        textoEmail.setForeground(new java.awt.Color(0, 153, 153));
+        textoEmail.setText("Email");
+
+        txtTelefonoNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoNuevoActionPerformed(evt);
+            }
+        });
+
+        txtEmailNuevi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailNueviActionPerformed(evt);
+            }
+        });
+
+        textoNuevaInfo.setFont(new java.awt.Font("Gabriola", 1, 36)); // NOI18N
+        textoNuevaInfo.setForeground(new java.awt.Color(0, 153, 153));
+        textoNuevaInfo.setText("Nueva informacion");
+
+        btnActualizar.setBackground(new java.awt.Color(186, 200, 255));
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Gabriola", 3, 22)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Actualizar");
+
+        javax.swing.GroupLayout btnActualizarLayout = new javax.swing.GroupLayout(btnActualizar);
+        btnActualizar.setLayout(btnActualizarLayout);
+        btnActualizarLayout.setHorizontalGroup(
+            btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnActualizarLayout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+        );
+        btnActualizarLayout.setVerticalGroup(
+            btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnActualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(textoNuevaInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoTel)
+                    .addComponent(textoEmail))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTelefonoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmailNuevi, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(textoNuevaInfo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textoTel)
+                            .addComponent(txtTelefonoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textoEmail)
+                            .addComponent(txtEmailNuevi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
+        );
+
+        javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
+        panelInfo.setLayout(panelInfoLayout);
+        panelInfoLayout.setHorizontalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(textoCorreoA, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtEmailActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelInfoLayout.setVerticalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoCorreoA)
+                    .addComponent(txtEmailActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtEmailNueviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailNueviActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailNueviActionPerformed
+
+    private void txtTelefonoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoNuevoActionPerformed
+
+    private void txtEmailActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActualizarActionPerformed
     /**
-     * @param args the command line arguments
-     */
-    
+     * Evento del boton actualizarrAmigo al hacer click
+     * Actualizar la informacion de un amigo, captura las excepciones
+     * @param     evt
+    */
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        try {
+            String emailBuscar = this.txtEmailActualizar.getText();
+            String telefonoNuevo = this.txtTelefonoNuevo.getText();
+            String emailNuevo = this.txtEmailNuevi.getText();
+            this.directorio.actualizarAmigo(emailNuevo, telefonoNuevo, emailBuscar);
+            JOptionPane.showMessageDialog(this, "Informacion actualizada con exito");
+            this.dispose();
+
+        } catch (DatosInvalidosException e) {
+            JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente");
+            this.txtEmailActualizar.setText("");
+            this.txtTelefonoNuevo.setText("");
+            this.txtEmailNuevi.setText("");
+
+        } catch (AmigoNoEncontradoException e) {
+            JOptionPane.showMessageDialog(this, "El amigo no fue encontrado en el directorio");
+            this.txtEmailActualizar.setText("");
+            this.txtTelefonoNuevo.setText("");
+            this.txtEmailNuevi.setText("");
+        }
+    }//GEN-LAST:event_btnActualizarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnActualizar;
+    private javax.swing.JLabel iconoActualizar;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelInfo;
+    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JLabel textoActualizarA;
+    private javax.swing.JLabel textoCorreoA;
+    private javax.swing.JLabel textoEmail;
+    private javax.swing.JLabel textoNuevaInfo;
+    private javax.swing.JLabel textoTel;
+    private javax.swing.JTextField txtEmailActualizar;
+    private javax.swing.JTextField txtEmailNuevi;
+    private javax.swing.JTextField txtTelefonoNuevo;
     // End of variables declaration//GEN-END:variables
 }
