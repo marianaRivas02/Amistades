@@ -64,20 +64,25 @@ public class DirectorioAmistades {
      * @param email
      * @return amigo
     */
-    public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException{
-        boolean encontrado = false;
-        for (int i = 0; i < amigos.size(); i++){
-            Amigo amigo = amigos.get(i);
-            if (amigo.getEmail().equals(email)) {
-                encontrado = true;
-                return amigo;
-            }
+    public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException {
+    boolean encontrado = false;
+    Amigo amigoEncontrado = null; 
+    for (int i = 0; i < amigos.size(); i++) {
+        Amigo amigo = amigos.get(i);
+        if (amigo.getEmail().equals(email)) {
+            encontrado = true;
+            amigoEncontrado = amigo;
+            break; 
         }
-        
-        if (!encontrado){
-            throw new AmigoNoEncontradoException();
-        }      
     }
+
+    if (!encontrado) {
+        throw new AmigoNoEncontradoException();
+    }
+    
+    return amigoEncontrado; // Se retorna el amigo encontrado
+}
+
         
     /**
      * Actualiza la informacion de un amigo

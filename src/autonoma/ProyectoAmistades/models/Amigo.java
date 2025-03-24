@@ -29,6 +29,14 @@ public class Amigo extends Persona {
      * @param email
      * @param nombres
     */
+    
+    
+    
+    public Amigo(String email, String nombres) throws DatosInvalidosException {
+        super(nombres);
+        this.email = email;
+    }
+
     public Amigo(String telefono, String email, String nombres) throws DatosInvalidosException {
         super(nombres);
         
@@ -38,7 +46,7 @@ public class Amigo extends Persona {
 
         boolean inicioTel = telefono.startsWith("606");
         boolean inicioTel2 = telefono.startsWith("30");
-
+        
         if (!(inicioTel || inicioTel2)) { 
             throw new DatosInvalidosException();
         }

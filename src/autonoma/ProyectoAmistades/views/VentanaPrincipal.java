@@ -501,7 +501,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarAmigoMouseClicked
 
     private void btnBuscarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarAmigoMouseClicked
-        System.out.println("buscar amigo");
+        if(this.directorio.getAmigos().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero para poder obtenerlo por medio de la busqueda");
+        }
+        else{
+            BuscarAmigo ventanaBuscarAmigo = new BuscarAmigo (this, true, this.directorio, this);
+            ventanaBuscarAmigo.setVisible(true);
+        }
     }//GEN-LAST:event_btnBuscarAmigoMouseClicked
 
     private void btnActualizarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAmigoMouseClicked
@@ -524,7 +530,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerAmigosMouseClicked
 
     private void btnVerInfoAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerInfoAppMouseClicked
-        System.out.println("ver informacion de la aplicacion");
+        VerInfoApp ventanaVerInfoApp = new VerInfoApp (this, true, this.directorio, this);
+        ventanaVerInfoApp.setVisible(true);
     }//GEN-LAST:event_btnVerInfoAppMouseClicked
     
     private void mouseEntered(JPanel panel){
