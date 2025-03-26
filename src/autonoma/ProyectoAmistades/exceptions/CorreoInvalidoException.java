@@ -10,11 +10,11 @@ package autonoma.ProyectoAmistades.exceptions;
  * @since 20250321
  * @version 1.0
  */
-public class DatosInvalidosException extends RuntimeException {
+public class CorreoInvalidoException extends RuntimeException{
     /**
      * Mensaje de la excepcion
     */
-    public DatosInvalidosException(){
-        super ("Datos invalidos, intentelo nuevamente");
+    public CorreoInvalidoException() {
+        super ("Email invalido, intentelo de nuevo");
     }
 }

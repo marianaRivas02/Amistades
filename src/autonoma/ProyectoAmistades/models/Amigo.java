@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package autonoma.ProyectoAmistades.models;
-import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.exceptions.CorreoInvalidoException;
+import autonoma.ProyectoAmistades.exceptions.TelefonoInvalidoException;
 
 /**
  * Modelo que permite representar un amigo
@@ -23,42 +24,47 @@ public class Amigo extends Persona {
     */
     private String email;
 
+    
+    
+    public Amigo(String email, String nombres) throws CorreoInvalidoException {
+        super(nombres);
+        this.email = email;
+    }
+
     /**
      * Inicializa los atributos de la clase y lanza la excepcion de DatosInvalidosException
      * @param telefono
      * @param email
      * @param nombres
     */
-    
-    
-    
-    public Amigo(String email, String nombres) throws DatosInvalidosException {
+    public Amigo(String telefono, String email, String nombres) throws TelefonoInvalidoException {
         super(nombres);
+        this.verificarDatos(telefono, email);
+
+        this.telefono = telefono;
         this.email = email;
     }
 
-    public Amigo(String telefono, String email, String nombres) throws DatosInvalidosException {
-        super(nombres);
+    public void verificarDatos (String telefono, String email){
+        if (telefono == null || telefono.isEmpty()) {
+            throw new TelefonoInvalidoException();
+        }
         
-        if (telefono == null || telefono.isEmpty() || email == null || email.isEmpty()) {
-            throw new DatosInvalidosException();
+        if (email == null || email.isEmpty()) {
+            throw new CorreoInvalidoException();
         }
 
         boolean inicioTel = telefono.startsWith("606");
         boolean inicioTel2 = telefono.startsWith("30");
         
         if (!(inicioTel || inicioTel2)) { 
-            throw new DatosInvalidosException();
+            throw new TelefonoInvalidoException();
         }
 
         if (email.indexOf('@') == -1) {
-            throw new DatosInvalidosException();
+            throw new CorreoInvalidoException();
         }
-
-        this.telefono = telefono;
-        this.email = email;
     }
-
 
     /**
      * Retorna el telefono del amigo
@@ -74,14 +80,14 @@ public class Amigo extends Persona {
     */
     public void setTelefono(String telefono) {
         if (telefono == null || telefono.isEmpty()) {
-            throw new DatosInvalidosException();
+            throw new TelefonoInvalidoException();
         }
 
         boolean inicioTel = telefono.startsWith("606");
         boolean inicioTel2 = telefono.startsWith("30");
 
         if (!(inicioTel || inicioTel2)) { 
-            throw new DatosInvalidosException();
+            throw new TelefonoInvalidoException();
         }
         this.telefono = telefono;
     }
@@ -100,11 +106,11 @@ public class Amigo extends Persona {
     */
     public void setEmail(String email) {
         if (email == null || email.isEmpty()) {
-            throw new DatosInvalidosException();
+            throw new TelefonoInvalidoException();
         }
         
         if (email.indexOf('@') == -1) {
-            throw new DatosInvalidosException();
+            throw new TelefonoInvalidoException();
         }
         
         this.email = email;

@@ -5,7 +5,8 @@
 package autonoma.ProyectoAmistades.views;
 
 import autonoma.ProyectoAmistades.exceptions.AmigoNoEncontradoException;
-import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.exceptions.CorreoInvalidoException;
+import autonoma.ProyectoAmistades.exceptions.TelefonoInvalidoException;
 import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import javax.swing.JOptionPane;
 
@@ -288,16 +289,18 @@ public class ActualizarAmigo extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Informacion actualizada con exito");
             this.dispose();
 
-        } catch (DatosInvalidosException e) {
-            JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente");
-            this.txtEmailActualizar.setText("");
-            this.txtTelefonoNuevo.setText("");
-            this.txtEmailNuevi.setText("");
-
         } catch (AmigoNoEncontradoException e) {
             JOptionPane.showMessageDialog(this, "El amigo no fue encontrado en el directorio");
             this.txtEmailActualizar.setText("");
             this.txtTelefonoNuevo.setText("");
+            this.txtEmailNuevi.setText("");
+
+        } catch (TelefonoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, "Telefono invalido, intentelo nuevamente");
+            this.txtTelefonoNuevo.setText("");
+            
+        } catch (CorreoInvalidoException e){
+            JOptionPane.showMessageDialog(this, "Email invalido, intentelo nuevamente");
             this.txtEmailNuevi.setText("");
         }
     }//GEN-LAST:event_btnActualizarMouseClicked

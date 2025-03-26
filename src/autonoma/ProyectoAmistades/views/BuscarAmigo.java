@@ -5,7 +5,7 @@
 package autonoma.ProyectoAmistades.views;
 
 import autonoma.ProyectoAmistades.exceptions.AmigoNoEncontradoException;
-import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.exceptions.CorreoInvalidoException;
 import autonoma.ProyectoAmistades.models.Amigo;
 import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import javax.swing.JOptionPane;
@@ -271,7 +271,6 @@ public class BuscarAmigo extends javax.swing.JDialog {
             return;
             }
             
-          
             Amigo amigo = this.directorio.buscarAmigo(EmailEncontrar);
             String mensaje = "El amigo con email " + EmailEncontrar + " fue encontrado con éxito:\n" +
                  "Email amigo: " + EmailEncontrar + "\n" +
@@ -280,8 +279,8 @@ public class BuscarAmigo extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, mensaje);
             this.dispose();
 
-        } catch (DatosInvalidosException e) {
-            JOptionPane.showMessageDialog(this, "Dato invalido, intentelo nuevamente");
+        } catch (CorreoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, "Email invalido, intentelo nuevamente");
             this.txtEmailEncontrar.setText("");
             
         } catch (AmigoNoEncontradoException e) {

@@ -45,15 +45,6 @@ public class DirectorioAmistades {
     public void setAmigos(ArrayList<Amigo> amigos) {
         this.amigos = amigos;
     }
-    
-    public boolean buscar (Amigo amigo){
-        for (int i = 0; i < this.amigos.size(); i++){
-            if (amigos.get(i).equals(amigo)){
-                return true;
-            }
-        }
-        return false;
-    }
         
     /**
      * Agregar un nuevo amigo al arreglo
@@ -107,6 +98,7 @@ public class DirectorioAmistades {
         boolean encontrado = false;
         for (int i = 0; i < this.amigos.size(); i++){
             if(this.amigos.get(i).getEmail().equals(emailBuscar)){
+                this.amigos.get(i).verificarDatos(telefono, email);
                 this.amigos.get(i).setEmail(email);
                 this.amigos.get(i).setTelefono(telefono);
                 encontrado = true;

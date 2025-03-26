@@ -5,7 +5,8 @@
 package autonoma.ProyectoAmistades.views;
 
 import autonoma.ProyectoAmistades.exceptions.AmigoExistenteException;
-import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.exceptions.CorreoInvalidoException;
+import autonoma.ProyectoAmistades.exceptions.TelefonoInvalidoException;
 import autonoma.ProyectoAmistades.models.Amigo;
 import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import javax.swing.JOptionPane;
@@ -282,18 +283,20 @@ public class AgregarAmigo extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Amigo agregado con exito");
             this.dispose();
 
-        } catch (DatosInvalidosException e) {
-            JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente");
-            this.txtNombreCompleto.setText("");
+        } catch (TelefonoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, "Telefono invalido, intentelo nuevamente");
             this.txtTelefono.setText("");
-            this.txtEmail.setText("");
 
         } catch (AmigoExistenteException e) {
             JOptionPane.showMessageDialog(this, "El amigo ya existe en el directorio");
             this.txtNombreCompleto.setText("");
             this.txtTelefono.setText("");
             this.txtEmail.setText("");
+        } catch (CorreoInvalidoException e){
+            JOptionPane.showMessageDialog(this, "Email invalido, intentelo nuevamente");
+            this.txtEmail.setText("");
         }
+       
     }//GEN-LAST:event_btnAgregarAmigoMouseClicked
 
     private void txtNombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCompletoActionPerformed

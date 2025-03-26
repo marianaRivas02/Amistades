@@ -6,7 +6,8 @@ package autonoma.ProyectoAmistades.views;
 
 import autonoma.ProyectoAmistades.exceptions.AmigoExistenteException;
 import autonoma.ProyectoAmistades.exceptions.AmigoNoEncontradoException;
-import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.exceptions.CorreoInvalidoException;
+import autonoma.ProyectoAmistades.exceptions.TelefonoInvalidoException;
 import autonoma.ProyectoAmistades.models.Amigo;
 import autonoma.ProyectoAmistades.models.DirectorioAmistades;
 import javax.swing.JOptionPane;
@@ -284,11 +285,9 @@ public class EliminarAmigo extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Amigo eliminado con exito");
             this.dispose();
 
-        } catch (DatosInvalidosException e) {
-            JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente");
-            this.txtNombreCompletoEliminar.setText("");
+        } catch (TelefonoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, "Telefono invalido, intentelo nuevamente");
             this.txtTelefonoEliminar.setText("");
-            this.txtEmailEliminar.setText("");
 
         } catch(AmigoNoEncontradoException e){
             JOptionPane.showMessageDialog(this, "Amigo no encontrado, intentelo nuevamente con un amigo existente");
@@ -296,7 +295,11 @@ public class EliminarAmigo extends javax.swing.JDialog {
             this.txtTelefonoEliminar.setText("");
             this.txtEmailEliminar.setText("");
   
+        } catch (CorreoInvalidoException e){
+            JOptionPane.showMessageDialog(this, "Correo invalido, intentelo nuevamente");
+            this.txtEmailEliminar.setText("");
         }
+        
     }//GEN-LAST:event_btnEliminarAmigoMouseClicked
 
     private void txtNombreCompletoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCompletoEliminarActionPerformed
