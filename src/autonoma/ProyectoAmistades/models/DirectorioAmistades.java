@@ -76,7 +76,8 @@ public class DirectorioAmistades {
         
         if (!encontrado){
             throw new AmigoNoEncontradoException();
-        }      
+        }    
+        return null;
     }
         
     /**
