@@ -31,7 +31,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         try{
-            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/proyectoAmistades/images/DirectorioAmistades.png")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/proyectoAmistades/images/directorioAmistades.png")).getImage());
         }catch (Exception e){
             
         }
@@ -424,7 +424,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -439,8 +439,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -492,15 +491,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarAmigoMouseClicked
 
     private void btnEliminarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarAmigoMouseClicked
-        System.out.println("eliminar amigo");
+        if(this.directorio.getAmigos().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero, no puede eliminar amigos inexistentes");
+        }
+        else{
+            EliminarAmigo ventanaEliminarAmigo = new EliminarAmigo (this, true, this.directorio, this);
+            ventanaEliminarAmigo.setVisible(true);
+        }
     }//GEN-LAST:event_btnEliminarAmigoMouseClicked
 
     private void btnBuscarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarAmigoMouseClicked
-        System.out.println("buscar amigo");
+        if(this.directorio.getAmigos().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero para poder obtenerlo por medio de la busqueda");
+        }
+        else{
+            BuscarAmigo ventanaBuscarAmigo = new BuscarAmigo (this, true, this.directorio, this);
+            ventanaBuscarAmigo.setVisible(true);
+        }
     }//GEN-LAST:event_btnBuscarAmigoMouseClicked
 
     private void btnActualizarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAmigoMouseClicked
-        if(this.directorio.getAmigos().size() == 0){
+        if(this.directorio.getAmigos().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe agregar un amigo primero");
         }
         else{
@@ -519,12 +530,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerAmigosMouseClicked
 
     private void btnVerInfoAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerInfoAppMouseClicked
-        System.out.println("ver informacion de la aplicacion");
+        VerInfoApp ventanaVerInfoApp = new VerInfoApp (this, true, this.directorio, this);
+        ventanaVerInfoApp.setVisible(true);
     }//GEN-LAST:event_btnVerInfoAppMouseClicked
     
     private void mouseEntered(JPanel panel){
+
+
         panel.setBackground(new Color (222, 229, 255));
     
+
         panel.setBackground(new Color (207, 240, 255));
     }
     

@@ -4,19 +4,34 @@
  */
 package autonoma.ProyectoAmistades.views;
 
+import autonoma.ProyectoAmistades.exceptions.AmigoNoEncontradoException;
+import autonoma.ProyectoAmistades.exceptions.DatosInvalidosException;
+import autonoma.ProyectoAmistades.models.Amigo;
+import autonoma.ProyectoAmistades.models.DirectorioAmistades;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author maria
  */
 public class BuscarAmigo extends javax.swing.JDialog {
 
+   
+    
+    VentanaPrincipal ventana;
     /**
-     * Creates new form BuscarAmigo
-     */
-    public BuscarAmigo(java.awt.Frame parent, boolean modal) {
+    * Instancia de directorioAmistades
+    */
+    DirectorioAmistades directorio;
+    
+    public BuscarAmigo(java.awt.Frame parent, boolean modal, DirectorioAmistades directorio, VentanaPrincipal ventana) {
         super(parent, modal);
         initComponents();
+        this.ventana = ventana;
+        this.directorio = directorio;
+        this.setLocationRelativeTo(null);
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,26 +42,273 @@ public class BuscarAmigo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        panelTitulo = new javax.swing.JPanel();
+        textoActualizarA = new javax.swing.JLabel();
+        iconoActualizar = new javax.swing.JLabel();
+        panelInfo = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btnBuscar = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        textoCorreoA = new javax.swing.JLabel();
+        txtEmailEncontrar = new javax.swing.JTextField();
+        textoNuevaInfo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelTitulo.setBackground(new java.awt.Color(186, 200, 255));
+
+        textoActualizarA.setFont(new java.awt.Font("Gabriola", 0, 60)); // NOI18N
+        textoActualizarA.setForeground(new java.awt.Color(255, 255, 255));
+        textoActualizarA.setText("Buscar amigo");
+
+        iconoActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoAmistades/images/buscarAmigo.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
+        panelTitulo.setLayout(panelTituloLayout);
+        panelTituloLayout.setHorizontalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(textoActualizarA)
+                .addGap(33, 33, 33)
+                .addComponent(iconoActualizar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelTituloLayout.setVerticalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloLayout.createSequentialGroup()
+                .addGroup(panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelTituloLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(textoActualizarA))
+                    .addGroup(panelTituloLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(iconoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelInfo.setBackground(new java.awt.Color(229, 229, 255));
+
+        btnBuscar.setBackground(new java.awt.Color(186, 200, 255));
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Gabriola", 3, 22)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Buscar");
+
+        javax.swing.GroupLayout btnBuscarLayout = new javax.swing.GroupLayout(btnBuscar);
+        btnBuscar.setLayout(btnBuscarLayout);
+        btnBuscarLayout.setHorizontalGroup(
+            btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+        btnBuscarLayout.setVerticalGroup(
+            btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        textoCorreoA.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        textoCorreoA.setForeground(new java.awt.Color(0, 153, 153));
+        textoCorreoA.setText("Ingrese el correo del amigo");
+
+        txtEmailEncontrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailEncontrarActionPerformed(evt);
+            }
+        });
+
+        textoNuevaInfo.setFont(new java.awt.Font("Gabriola", 1, 36)); // NOI18N
+        textoNuevaInfo.setForeground(new java.awt.Color(0, 153, 153));
+        textoNuevaInfo.setText(" Informacion amigo");
+
+        jLabel2.setFont(new java.awt.Font("Gabriola", 2, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel2.setText("Conéctate, encuentra, comparte.");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoNuevaInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(textoCorreoA, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtEmailEncontrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(textoNuevaInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoCorreoA)
+                    .addComponent(txtEmailEncontrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Gabriola", 2, 18)); // NOI18N
+        jLabel1.setText("Un buen amigo puede estar a solo un clic de distancia.");
+
+        jLabel3.setFont(new java.awt.Font("Gabriola", 2, 18)); // NOI18N
+        jLabel3.setText("A veces, solo necesitamos el directorio correcto para encontrarlo.");
+
+        javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
+        panelInfo.setLayout(panelInfoLayout);
+        panelInfoLayout.setHorizontalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 165, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
+        );
+        panelInfoLayout.setVerticalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtEmailEncontrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailEncontrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailEncontrarActionPerformed
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        try {
+            String EmailEncontrar = this.txtEmailEncontrar.getText();
+            
+            if (EmailEncontrar == null || EmailEncontrar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un email antes de buscar.");
+            return;
+            }
+            
+          
+            Amigo amigo = this.directorio.buscarAmigo(EmailEncontrar);
+            String mensaje = "El amigo con email " + EmailEncontrar + " fue encontrado con éxito:\n" +
+                 "Email amigo: " + EmailEncontrar + "\n" +
+                 "Nombre amigo: " + amigo.getNombres() + "\n" +
+                 "Teléfono amigo: " + amigo.getTelefono();
+            JOptionPane.showMessageDialog(this, mensaje);
+            this.dispose();
+
+        } catch (DatosInvalidosException e) {
+            JOptionPane.showMessageDialog(this, "Dato invalido, intentelo nuevamente");
+            this.txtEmailEncontrar.setText("");
+            
+        } catch (AmigoNoEncontradoException e) {
+            JOptionPane.showMessageDialog(this, "El amigo no fue encontrado en el directorio, intentelo de nuevo");
+            this.txtEmailEncontrar.setText("");
+           
+        }
+    }//GEN-LAST:event_btnBuscarMouseClicked
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnBuscar;
+    private javax.swing.JLabel iconoActualizar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel panelInfo;
+    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JLabel textoActualizarA;
+    private javax.swing.JLabel textoCorreoA;
+    private javax.swing.JLabel textoNuevaInfo;
+    private javax.swing.JTextField txtEmailEncontrar;
     // End of variables declaration//GEN-END:variables
 }

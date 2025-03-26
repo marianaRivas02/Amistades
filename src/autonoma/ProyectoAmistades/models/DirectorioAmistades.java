@@ -46,17 +46,26 @@ public class DirectorioAmistades {
         this.amigos = amigos;
     }
     
+    public boolean buscar (Amigo amigo){
+        for (int i = 0; i < this.amigos.size(); i++){
+            if (amigos.get(i).equals(amigo)){
+                return true;
+            }
+        }
+        return false;
+    }
+        
     /**
      * Agregar un nuevo amigo al arreglo
      * @param amigo
     */
     public void agregarAmigo(Amigo amigo) throws AmigoExistenteException {
         for (int i = 0; i < this.amigos.size(); i++) {
-            if (this.amigos.get(i).equals(amigo)) { 
+            if (this.amigos.get(i).getTelefono().equals(amigo.getTelefono())) {
                 throw new AmigoExistenteException();
             }
         }
-        this.amigos.add(amigo); 
+        this.amigos.add(amigo);
     }
 
     /**
@@ -64,20 +73,28 @@ public class DirectorioAmistades {
      * @param email
      * @return amigo
     */
-    public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException{
+    public Amigo buscarAmigo(String email) throws AmigoNoEncontradoException {
         boolean encontrado = false;
-        for (int i = 0; i < amigos.size(); i++){
+        Amigo amigoEncontrado = null; 
+        for (int i = 0; i < amigos.size(); i++) {
             Amigo amigo = amigos.get(i);
             if (amigo.getEmail().equals(email)) {
                 encontrado = true;
-                return amigo;
+                amigoEncontrado = amigo;
+                break; 
             }
+
+            if (!encontrado){
+                throw new AmigoNoEncontradoException();
+            }    
+            return null;
         }
-        
-        if (!encontrado){
+
+        if (!encontrado) {
             throw new AmigoNoEncontradoException();
-        }    
-        return null;
+        }
+
+        return amigoEncontrado; 
     }
         
     /**
@@ -105,19 +122,26 @@ public class DirectorioAmistades {
      * Eliminar un amigo del arreglo
      * @param amigo
     */
-    public void eliminarAmigo(Amigo amigo) throws AmigoNoEncontradoException{
-        boolean encontrado = false;
-        for (int i = 0; i < amigos.size(); i++){
-            if (amigos.get(i).getNombres().equals(amigo.getNombres())){ 
-                amigos.remove(i);
-                encontrado = true;
-            }
-        }
-        
-        if(!encontrado){
-            throw new AmigoNoEncontradoException();
+    public void eliminarAmigo(Amigo amigo) throws AmigoNoEncontradoException {
+    boolean encontrado = false;
+    
+    for (int i = 0; i < amigos.size(); i++) {
+        Amigo amigo1 = amigos.get(i);
+       
+        if (amigo1.getNombres().equals(amigo.getNombres()) &&
+            amigo1.getTelefono().equals(amigo.getTelefono()) &&
+            amigo1.getEmail().equals(amigo.getEmail())) {
+            amigos.remove(i);
+            encontrado = true;
+            break; 
         }
     }
+    
+    if (!encontrado) {
+        throw new AmigoNoEncontradoException();
+    }
+}
+
     
     /**
      * Retorna el arreglo de amigos
